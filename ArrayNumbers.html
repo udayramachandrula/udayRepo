@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+
+
+<script type="text/javascript" >
+    //console.log("hi");
+    // excercise-1
+    var arrValue = [4,6,3,8,2];
+    var newArr = [];
+    function addValues(arrValues){
+        arrValue.push(arrValues);
+        displayValues();
+ }
+
+    function displayValues(){
+         console.log(arrValue);
+    }
+
+
+ function minMaxArr(){
+    newArr.push(Math.min(...arrValue));
+    newArr.push(Math.max(...arrValue));
+    console.log(newArr);
+    newArr = [];
+ }
+
+
+//   exercise-2
+var fArrValue = [2,8,4,6,"hi","uday",5,"yash"];
+
+function addFilterArrValues(filterValues){
+    fArrValue.push(filterValues);
+    displayFilterValues();
+}
+    function displayFilterValues(){
+         console.log(fArrValue);
+    }
+
+ function filterArray(){
+     var filteredArr = fArrValue.filter(function(item){
+         return (!isNaN(item));
+     })
+
+     console.log(filteredArr);
+ }
+
+// Exercise -3
+
+var studentArr = [];//{"name":"uday","id":2},{"name":"yash","id":3},{"name":"sagar","id":4}];
+
+function addStudents(sName,sId){
+    
+    var newStudent = {};
+    newStudent.name = sName;
+    newStudent.id = sId;  
+    studentArr.push(newStudent);
+    GetStudents();
+}
+
+
+function GetStudents(){
+         console.log(studentArr);
+    }
+
+
+    function getStudentNames(){
+        var tempStudArr = [];
+        for(var i = 0; i < studentArr.length;i++){
+            tempStudArr.push(studentArr[i].name);
+        }
+        console.log(tempStudArr);
+    }
+
+
+
+
+// excercise-4
+
+
+function hasKey(objValues, key)
+ {
+	var status = false;
+	for(k in objValues){
+		if(key == k){
+			status = true;
+			break;
+		}
+	}
+	console.log(status);
+
+}
+
+</script>
+
+</body>
+</html> 

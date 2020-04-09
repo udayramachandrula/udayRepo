@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script type="text/javascript">
+  function validateForm() {
+  var firstName = uppercase(document.forms["myForm"]["fname"].value);
+
+  var lastName = uppercase(document.forms["myForm"]["lname"].value);
+
+
+  alert(firstName +" "+ lastName);
+
+  document.getElementById("fullName").innerHTML = firstName +" "+ lastName;
+}
+
+function uppercase(str)
+{
+  var arr = str.split(' ');
+  var newArr = [];
+    
+  for(var x = 0; x < arr.length; x++){
+    newArr.push(arr[x].charAt(0).toUpperCase()+arr[x].slice(1));
+  }
+  return newArr.join(' ');
+}
+
+
+
+    </script>
+</head>
+
+<body>
+    <form name="myForm"  onsubmit="return validateForm()" >
+
+
+First Name: <input type="text" name="fname"/><br><br>
+
+Last Name: <input type="text" name="lname"/><br><br>
+
+
+<input type="submit" value="Submit"><br><br>
+
+<!-- Full Name : <input type="text" disabled= "disabled" name="fullname"> -->
+
+
+
+
+</form>
+Full Name : <p id="fullName"></p>
+</body>
+
+</html> 

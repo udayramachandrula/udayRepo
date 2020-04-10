@@ -1,0 +1,139 @@
+ <html>
+    <head>
+<script type="text/javascript">
+// var projArray = [["id"= 2,name = "uday",description = "test-1"],
+// [id = 3,name = "yash",description = "test-2"],
+// [id = 4, name = "jhon",description = "test-3"],
+// [id = 5,name = "sagar",description = "test-4"]];
+
+
+
+var projArray = [{pid:2,pname:"Project-1",status:"InProgress"},
+{pid:3,pname:"Project-2",status:"Completed"},
+{pid:4,pname:"Project-3",status:"InProgress"},
+{pid:5,pname:"Project-4",status:"InProgress"}];
+
+
+function addNewProject(){
+    
+    var pId = parseInt(document.getElementById("pid").value);
+    var pName = document.getElementById("pname").value;
+    var pDescription = document.getElementById("pstatus").value;
+
+    var newProj = {};
+    newProj.id = pId; 
+    newProj.name = pName;
+    newProj.description = pDescription; 
+    projArray.push(newProj);
+    GetProjects();
+
+    
+}
+
+function GetProjects(){
+    console.log(projArray);
+}
+
+function SearchProjectDetailsByID(){
+    var projId = parseInt(document.getElementById("SearchProjID").value);
+
+    for(var i = 0;i< projArray.length;i++){
+        if(projArray[i].pid == projId){
+
+            document.getElementById("pid").value = projArray[i].pid;
+           
+            document.getElementById("pname").value = projArray[i].pname;
+            document.getElementById("pstatus").value = projArray[i].status;
+            console.log(projArray[i]);
+            var pid =   document.getElementById("pid");
+            disableControls();
+  
+        }
+    }
+
+}
+
+function disableControls(){
+    var pid =   document.getElementById("pid");
+  pid.disabled = true;
+  var pname =   document.getElementById("pname");
+  pname.disabled = true;
+}
+
+function enableControls(){
+    var pid =   document.getElementById("pid");
+  pid.disabled = false;
+  var pname =   document.getElementById("pname");
+  pname.disabled = false;
+}
+
+function clearform(){
+     document.getElementById("pid").value = "";
+    document.getElementById("pname").value = "";
+ document.getElementById("pstatus").value = ""; 
+}
+
+function updateStatusById(){
+    debugger;
+  var pStatus =   document.getElementById("pstatus").value;
+  
+    var pId = parseInt(document.getElementById("pid").value);
+
+    for(var i = 0; i < projArray.length; i++) {
+        if(projArray[i].pid == pId ){
+            projArray[i].status = document.getElementById("pstatus").value;
+            break;
+        }
+    }
+    enableControls();
+    clearform();
+}
+
+
+function deleteSelectedProjDetails(){
+    var pId = parseInt(document.getElementById("pid").value);
+
+    for(var i = 0; i < projArray.length; i++) {
+        if(projArray[i].pid == pId ){
+            delete projArray[i];
+            //projArray[i].status = document.getElementById("pstatus").value;
+            break;
+        }
+    }
+    enableControls();
+    clearform();
+}
+
+</script>
+    </head>
+    <body>
+<div > Search Project:  <input type="text" placeholder="Enter Project ID" id="SearchProjID"> &nbsp;&nbsp;
+    <input type="button" value="Search" onclick="SearchProjectDetailsByID()">
+
+</div>
+
+<br><br>
+        <div>
+        Enter Project Id:<input type="text" id="pid" placeholder="Enter Id"> <br><br>
+
+        Enter Project Name : <input type="text" id="pname" placeholder="Enter Name"> <br><br>
+
+        Enter Project status :  <select id="pstatus">
+            <option value="Completed">Completed</option>
+            <option value="InProgress">InProgress</option>  
+          </select>
+        <!-- Enter Project status : <input type= value="uday" id="pstatus" placeholder="Enter status"> <br><br> -->
+</div>
+<br>
+<br>
+<div>
+        <input type="button" id="btnSave" value ="Save" onclick="addNewProject();"/> 
+        <input type="button" id="btnUpdate" value ="Update" onclick="updateStatusById();"/>
+        <input type="button" id="btnDelete" value ="Delete" onclick="deleteSelectedProjDetails();"/>
+    </div>
+    </body>
+</html> 
+
+
+
+

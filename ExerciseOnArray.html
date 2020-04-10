@@ -1,0 +1,67 @@
+<html>
+    <head>
+<script type="text/javascript">
+// var projArray = [["id"= 2,name = "uday",description = "test-1"],
+// [id = 3,name = "yash",description = "test-2"],
+// [id = 4, name = "jhon",description = "test-3"],
+// [id = 5,name = "sagar",description = "test-4"]];
+
+
+
+var projArray = [{"id":2,"name":"Project-1","description":"Angular project"},
+{"id":3,"name":"Project-2","description":"dotnet project"},
+{"id":4,"name":"Project-3","description":"javascript project"},
+{"id":5,"name":"Project-4","description":"react project"}];
+
+// function SearchForEmpStatus(id){
+//     if ()
+// }
+
+function addNewProject(pId,pName,pDescription){
+    
+    var newProj = {};
+    newProj.id = pId; 
+    newProj.name = pName;
+    newProj.description = pDescription; 
+    projArray.push(newProj);
+    GetProjects();
+}
+
+function GetProjects(){
+    console.log(projArray);
+}
+
+function GetProjectsByID(){
+    var projId = document.getElementById("projNumber").value;
+
+    for(var i = 0;i< projArray.length;i++){
+        if(projArray[i].id == projId){
+            document.getElementById("projName").innerHTML = projArray[i].name;
+            document.getElementById("projDescription").innerHTML = projArray[i].description;
+            console.log(projArray[i]);
+        }
+    }
+
+}
+
+function btnSearchProj(){
+
+}
+
+
+console.log(projArray);
+
+</script>
+    </head>
+    <body>
+        Enter the Project Id:<input type="text" id="projNumber"> <br><br>
+
+        <input type="button" id="btnclick" value ="Enter" onclick="GetProjectsByID();"/>
+
+<br><br>
+       Project Name : <span style="color: red;" id="projName"></span>
+<br>
+<br>
+       Project Description : <span style="color: red;" id="projDescription"></span>
+    </body>
+</html>

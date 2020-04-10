@@ -1,0 +1,44 @@
+<html>
+    <head>
+        <h3> Check Number is Prime Number Or Not.</h3>
+
+
+        <script type="text/javascript">
+        function SearchForPrimeOrNot(){
+            //alert("hi");
+            var enteredValue = document.getElementById("pNumber").value;
+            var finalResult ;
+            var blnFlag = true;
+           
+            enteredValue = parseInt(enteredValue);
+
+            for(var i = 2; i <= enteredValue - 1; i++) {
+                if (enteredValue % i == 0) { 
+                    blnFlag = false; 
+                    break; 
+                } 
+            }
+            
+            if(blnFlag == true){
+                    finalResult = enteredValue + "  is a prime number";
+            }
+            else{
+                finalResult = enteredValue + "  is not a prime number";
+            }
+            document.getElementById("finalResult").innerHTML = finalResult;
+        }
+        
+        </script>
+    </head>
+<body>
+    <div>
+        Enter the Number:<input type="text" id="pNumber"> <br><br>
+
+        <input type="button" id="btnclick" value ="Check" onclick="SearchForPrimeOrNot();"/>
+
+
+        <p style="color: red;" id="finalResult"></p>
+    </div>
+</body>
+
+</html>

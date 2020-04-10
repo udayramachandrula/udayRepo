@@ -1,0 +1,39 @@
+<html>
+    <head>
+        <h4> Project Status</h4>
+<script type="text/javascript">
+
+var status = "completed";
+var projObject = [{"id":2,"name":"uday","description":"test-1","status":"completed"},
+{"id":3,"name":"yash","description":"test-2","status":"yet to start"},
+{"id":4,"name":"jhon","description":"test-3","status":"completed"},
+{"id":5,"name":"sagar","description":"test-4","status":"In Progress"}];
+
+function ProjectStatus(){
+    var blnStatus = false;
+
+    var projId = parseInt(document.getElementById("projId").value);
+
+for(var i = 0;i< projObject.length;i++){
+    if(projObject[i].id == projId){
+        if( projObject[i].status == status){
+        blnStatus = true;
+        break;
+        }
+     }
+}
+
+document.getElementById("finalResult").innerHTML = blnStatus;
+
+}
+
+</script>
+    </head>
+    <body>
+<div>
+   Enter Id : <input id="projId" type="number" placeholder="Enter Project ID"> <br><br>
+   <input type="button" value="Search" onclick="ProjectStatus()"><br><br>
+   Completed Status :<span style="color: red;" id="finalResult"></span>
+</div>
+    </body>
+</html>

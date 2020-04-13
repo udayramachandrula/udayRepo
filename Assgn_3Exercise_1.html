@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <h4>JavaScript Assignment</h4>
+</head>
+
+<body>
+    <table>
+        <tbody>
+            <form name="form1" >
+                
+                <tr>
+                    <td><label>Project Name : </label></td>
+                    <td> <input type="text" id="pName" placeholder="Enter Project Name"></td>
+                </tr>
+                <tr>
+                    <td><label>Description :</label></td>
+                    <td> <input type="text" id="description" placeholder="Enter Project Description"></td>
+                </tr>
+                <tr>
+                <tr>
+                    <td><label>Status : </label></td>
+                    <td> <input type="text" id="status" placeholder="Enter Status"></td>
+                </tr>
+                <td></td>
+                <td><input id="addProjectDetails" type="button" onclick="Project.addProjectDetails(this.form)" value="Save"></input></td>
+                </tr>
+            </form>
+        </tbody>
+    </table>
+    
+       
+            <input id="btnProjectList" type="button" onclick="Project.DisplayProjectDetails()" value="Projects List"></input> &nbsp;&nbsp;
+            <input id="btnVerifySize" type="button" onclick="Project.VerifyProjListSize()" value="CHECK"></input>
+            
+        
+    <br><br>
+            Total Number of rows in the table and size of the list is  : 
+            <span id="StatusMsg"></span></input>
+            <br>
+            <br>
+            
+        
+    
+    <table id="ProjList" border="1">
+
+    </table>
+
+    <script type="text/javascript">
+    var Project = {
+    ProjArr: [
+        { id: 1, name: "project1",description: "this is Project1", status: "Completed" },
+        { id: 2, name: "project2",description: "this is Project2", status: "In-prograss",  },
+        { id: 3, name: "project3",description: "this is Project3", status: "Completed" },
+        { id: 4, name: "project4",description: "this is Project4", status: "In-prograss" }
+    ],
+
+    addRowToTable: function addRowToTable(obj) {
+debugger;
+        var table = document.getElementById("ProjList");
+
+        var rowCount = table.rows.length;
+        var row = table.insertRow(rowCount);
+
+        var cell1 = row.insertCell(0);
+        cell1.innerHTML = obj.id;
+
+        var cell2 = row.insertCell(1);
+        cell2.innerHTML = obj.name;
+
+        var cell3 = row.insertCell(2);
+        cell3.innerHTML = obj.description;
+
+        var cell4 = row.insertCell(3);
+        cell4.innerHTML = obj.status;
+    },
+    addProjectDetails: function addProjectDetails(form) {
+        debugger;
+        var obj = {
+            id: this.ProjArr[this.ProjArr.length-1].id + 1,
+            name: form.pName.value,
+            description : form.description.value,
+            status: form.status.value
+        }
+
+        this.ProjArr.push(obj);
+
+        var table = document.getElementById("ProjList");
+        var rowCount = table.rows.length;
+        if(rowCount <= 0)
+        this.BindTableHeaders();
+        
+        this.addRowToTable(obj);
+    },
+    
+    BindTableHeaders:function BindTableHeaders(){
+
+        var table = document.getElementById("ProjList");
+
+        var rowCount = table.rows.length;
+        var row = table.insertRow(rowCount);
+
+        var cells1 = row.insertCell(0);
+        cells1.innerHTML = "ID"
+
+        var cells2 = row.insertCell(1);
+        cells2.innerHTML = "Name";
+
+        var cells3 = row.insertCell(2);
+        cells3.innerHTML = "Description";
+
+        var cells4 = row.insertCell(3);
+        cells4.innerHTML = "Status";
+
+
+},
+
+    DisplayProjectDetails : function DisplayProjectDetails(){
+        var table = document.getElementById("ProjList");
+        debugger;
+        table.innerHTML = "";
+
+        this.BindTableHeaders();
+
+        for (index = 0; index < this.ProjArr.length; index++) {
+            this.addRowToTable(this.ProjArr[index]);
+        }
+    },
+    VerifyProjListSize : function VerifyProjListSize(){
+        debugger;
+        var statusCheck = "" ;
+        var table = document.getElementById("ProjList");
+        var rowCount = table.rows.length;
+        if(rowCount-1 === Project.ProjArr.length){
+            statusCheck = "Equal";
+        } else {
+            statusCheck  = "Not Equal";
+        }
+        document.getElementById("StatusMsg").innerHTML = statusCheck;
+    }
+}
+    </script>
+
+
+</body>
+
+</html>

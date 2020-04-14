@@ -84,6 +84,9 @@ debugger;
             status: form.status.value
         }
 
+        form.pName.value = "";
+        form.description.value = "";
+        form.status.value = "";
         this.ProjArr.push(obj);
 
         var table = document.getElementById("ProjList");
@@ -123,8 +126,8 @@ debugger;
 
         this.BindTableHeaders();
 
-        for (index = 0; index < this.ProjArr.length; index++) {
-            this.addRowToTable(this.ProjArr[index]);
+        for (var i  = 0; i < this.ProjArr.length; i++) {
+            this.addRowToTable(this.ProjArr[i]);
         }
     },
     VerifyProjListSize : function VerifyProjListSize(){
@@ -141,7 +144,42 @@ debugger;
     }
 }
     </script>
+<script>
 
+class MyConsole{
+  logArr=[];
+   constructor() {
+
+   }
+
+    log(value) {
+     this.logArr.push(value);
+   }
+
+   history(){
+    for (var i in this.logArr){
+
+        var history = this.logArr[i] + "\n";
+      console.log( history);
+    }
+
+  }
+
+  clearHistory(){
+    this.logArr = [];
+    console.log("history cleared successfully");
+  }
+}
+
+
+
+var logs= new MyConsole();
+
+logs.log("uday");
+logs.log("1223423");
+logs.history();
+logs.clearHistory();
+    </script>
 
 </body>
 
